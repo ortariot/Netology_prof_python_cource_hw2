@@ -1,57 +1,57 @@
-from pprint import pprint
-# читаем адресную книгу в формате CSV в список contacts_list
-import csv
-import re
+# from pprint import pprint
+# # читаем адресную книгу в формате CSV в список contacts_list
+# import csv
+# import re
 
-with open("phonebook_raw.csv", encoding='utf-8') as f:
-    rows = csv.reader(f, delimiter=",")
-#   for line in rows:
-#       print(line)
-    contacts_list = list(rows)
-    # pprint(contacts_list)
-#   print(rows)
-
-
-# firstname_pattern = re.compile()
-# lastname_pattern = re.compile()
-# surname_pattern = re.compile()
-phone_template = r'(\+7|8)?(\s*|-)\(?(\d+)\)?(\s*|\s?|-)' + \
-    r'(\d{3})(\-|\s*)(\d{2})(\-|\s*)*(\d{2})(\s\(?)?(\доб.\s*\d+)?\)?'
-
-phone_pattern = re.compile(phone_template)
-email_pattern = re.compile(r'\d+')
-organization_pattern = re.compile(r'\d+')
-position_pattern = re.compile(r'\d+')
+# with open("phonebook_raw.csv", encoding='utf-8') as f:
+#     rows = csv.reader(f, delimiter=",")
+# #   for line in rows:
+# #       print(line)
+#     contacts_list = list(rows)
+#     # pprint(contacts_list)
+# #   print(rows)
 
 
-def name_normalaze(name):
-    while(len(name) < 3):
-        name.append('')
-    return name
+# # firstname_pattern = re.compile()
+# # lastname_pattern = re.compile()
+# # surname_pattern = re.compile()
+# phone_template = r'(\+7|8)?(\s*|-)\(?(\d+)\)?(\s*|\s?|-)' + \
+#     r'(\d{3})(\-|\s*)(\d{2})(\-|\s*)*(\d{2})(\s\(?)?(\доб.\s*\d+)?\)?'
+
+# phone_pattern = re.compile(phone_template)
+# email_pattern = re.compile(r'\d+')
+# organization_pattern = re.compile(r'\d+')
+# position_pattern = re.compile(r'\d+')
 
 
-def phone_normalaze(phone):
-    return re.sub(phone_template, r'+7(\3)-\5-\7-\9 \11', phone)
+# def name_normalaze(name):
+#     while(len(name) < 3):
+#         name.append('')
+#     return name
+
+
+# def phone_normalaze(phone):
+#     return re.sub(phone_template, r'+7(\3)-\5-\7-\9 \11', phone)
    
 
 
-out = []
-for line in contacts_list[1:]:
-    name = ' '.join(line[:3]).strip().split(' ')
-    name = name_normalaze(name)
-    organization = [line[3]]
-    position = [line[4]]
-    phone = [phone_normalaze(line[5])]
-    email = [line[6]]
+# out = []
+# for line in contacts_list[1:]:
+#     name = ' '.join(line[:3]).strip().split(' ')
+#     name = name_normalaze(name)
+#     organization = [line[3]]
+#     position = [line[4]]
+#     phone = [phone_normalaze(line[5]).strip()]
+#     email = [line[6]]
 
-    print(name + organization + position + phone + email)
+#     print(name + organization + position + phone + email)
 
     
-    for item in line:
+#     for item in line:
         
-        num = phone_pattern.search(item)
-        if num:
-            out.append(item)
+#         num = phone_pattern.search(item)
+#         if num:
+#             out.append(item)
 
 
 # print(contacts_list[:1] + out)
@@ -77,3 +77,18 @@ for line in contacts_list[1:]:
 
 # print(s)
 
+
+
+
+a = {"a" : "hoi",
+     "b" : ""
+    }
+
+
+b = {"a" : "",
+     "b" : "punk"
+    }
+
+a.update(b)
+
+print(a)
